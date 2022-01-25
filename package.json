@@ -1,6 +1,7 @@
 {
   "name": "msal-react-tutorial",
   "version": "0.1.0",
+  "description": "A React single-page application calling Microsoft Graph API using MSAL.js (w/ AAD v2 endpoint)",
   "private": true,
   "dependencies": {
     "@azure/msal-browser": "^2.21.0",
