@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { PageLayout } from "./components/PageLayout";
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
+import { ProfileContent } from "./components/ProfileContent";
+import "./styles/App.css"
 
-function App() {
+/**
+ * If a user is authenticated the ProfileContent component above is rendered. Otherwise a message indicating a user is not authenticated is rendered.
+ */
+ const MainContent = () => {    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+          <AuthenticatedTemplate>
+              <ProfileContent />
+          </AuthenticatedTemplate>
+
+          <UnauthenticatedTemplate>
+              <h5 className="card-title">Please sign-in to see your profile information.</h5>
+          </UnauthenticatedTemplate>
+      </div>
+  );
+};
+
+export default function App() {
+  return (
+      <PageLayout>
+          <MainContent />
+      </PageLayout>
   );
 }
-
-export default App;
